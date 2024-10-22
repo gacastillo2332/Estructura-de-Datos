@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct nodo{
+    char *nombre;
+    struct nodo *sig;
+}Libro;
+
+Libro *listaLibro(Libro *Lista){
+    Lista = NULL;
+    return Lista;
+}
+Libro *agregarLibro(Libro *Lista, char *nombre){
+    Libro *nuevoLibro, *aux;
+    nuevoLibro = (Libro*)malloc(sizeof(Libro));
+    nuevoLibro->nombre = nombre;
+    nuevoLibro->sig = NULL;
+    if(Lista == NULL){
+        Lista = nuevoLibro;
+    }
+    else{
+        aux = Lista;
+        while(aux->sig != NULL){
+            aux = aux->sig;
+        }
+        aux->sig = nuevoLibro;
+    }
+    return Lista;
+}
+
+Libro *eliminarLibro(Libro *Lista, char *nombre){
+    Libro *nuevoLibro, *aux;
+    nuevoLibro = (Libro*)malloc(sizeof(Libro));
+    nuevoLibro->nombre = nombre;
+    nuevoLibro->sig = NULL;
+    if(Lista != NULL){
+        Lista = NULL;
+    }
+    else{
+        aux = Lista;
+        while(aux->sig != NULL){
+            aux = aux->sig;
+        }
+        aux->sig = NULL;
+    }
+    return Lista;
+}
+
+int main(){
+    Libro *Lista = listaLibro(Lista);
+    Lista = agregarLibro(Lista, "Aaaaahhhhh");
+    Lista = agregarLibro(Lista, "Well Cum");
+    Lista = agregarLibro(Lista, "kys");
+    Lista = agregarLibro(Lista, "Nie hao michi michi");
+    Lista = agregarLibro(Lista, "jajaj");
+    
+    while(Lista != NULL){
+        printf("%p\n",Lista->sig);
+        printf("%s\n\n",Lista->nombre);
+        Lista = Lista->sig;
+    }
+    printf("\n\nEliminando los datos\n");
+    Lista = eliminarLibro(Lista, "");
+    printf("%s\n",Lista->nombre);
+    printf("%p\n",Lista->nombre);
+    return 0;
+}
