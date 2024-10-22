@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#define MAX 6
+
+int main (){
+    char cola[6];
+    char dato;
+    int i, op, frente = -1, fin = 0;
+    system("color 3f");
+
+    printf("***********************************Cola Circular******************************\n");
+    printf("*******Grupo desarrollador: Andrea Ram%crez, Gabriel Castillo******\n \n",161);
+    printf("\n1. Insertar");
+    printf("\n2. Eliminar");
+    printf("\n3. Salir");
+    while (op != 3){
+        printf("\nIntroduzca la operaci%cn que desee realizar: ",162);
+        scanf("%i",&op);
+        if (op == 1){
+
+            if ((fin == MAX && frente == 0) || (fin == frente)){
+                printf("\nError de desbordamiento");
+            }
+            else{
+                if (fin == MAX&&frente!=0){
+                fin = 0;
+                }
+
+                fflush(stdin);
+                printf("\nIntroduzca los datos: ");
+                scanf("%c",&cola[fin]);
+                fin=fin+1;
+
+            }
+        }
+        else if (op == 2){
+
+            if (frente==0&&fin==0){
+               printf("\nError de subdesbordamiento");
+            }
+            else if(frente+1==fin){
+                cola[frente]='\n';
+                frente=0;
+                fin=0;
+            }
+            else{
+                if (frente == MAX&&fin!=0){
+                frente = 0;
+                }
+                cola[frente]='\n';
+                frente = frente + 1;
+
+            }
+
+            /*
+            if (frente==0&&fin==0){
+                printf("\nError de subdesbordamiento");
+            }
+            else{
+                if(frente==fin){
+                frente =0;
+                fin = 0;
+                }
+
+                cola[frente]='\n';
+                frente = frente + 1;
+
+            }
+            */
+            }
+            printf("\nMax: 6");
+            printf("\n\nElementos de la cola circular: ");
+            printf("Frente: %i \n",frente+1);
+            printf("Final: %i \n",fin);
+            for (i = 0; i < 6; i++){
+            printf("\n%c",cola[i]);
+        }
+        }
+}
